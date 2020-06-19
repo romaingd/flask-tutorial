@@ -11,6 +11,6 @@ htmlcov/
 
 dist/
 build/
-*.egg_info/
+*.egg-info/
 
 .vscode/
