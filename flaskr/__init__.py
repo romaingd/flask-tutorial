@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from . import db, auth
+from . import db, auth, blog
 
 def create_app(test_config=None):
     # Create and configure the app
