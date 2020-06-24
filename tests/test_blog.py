@@ -47,6 +47,8 @@ def test_exists_required(client, auth, path):
     auth.login()
     assert client.post(path).status_code == 404
 
+def test_show(client):
+    assert client.get('/1').status_code == 200
 
 def test_create(client, auth, app):
     auth.login()
