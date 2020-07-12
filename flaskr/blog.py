@@ -100,3 +100,19 @@ def delete(id):
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('blog.index'))
+
+@bp.route('/<int:id>/like', methods=('POST', 'GET'))
+@login_required
+def like_post(id):
+    get_post(id)
+    db = get_db()
+    db.execute(
+        'INSERT INTO post_like (author_id, post_id)'
+        ' VALUES (?, ?)',
+        (g.user['id'], id)
+    )
+    db.commit()
+    return redirect(url_for('blog.show_post', id=id))
+
+def user_liked_post(id):
+    return True

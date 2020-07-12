@@ -15,5 +15,10 @@
     {% endif %}
   </header>
   <p class="body">{{ post['body'] }}</p>
+  {% if g.user %}
+    {% if blog.user_liked_post(post['id']) %}
+      <a class="action" href="{{ url_for('blog.like_post', id=post['id']) }}">Like</a>
+    {% endif %}
+  {% endif %}
 </article>
 {% endblock %}
